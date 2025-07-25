@@ -1,34 +1,34 @@
 ---
-import { getMakeModelSet } from "~/utils/helpers";
+import { getSchoolSubSchoolSet } from "~/utils/helpers";
 import { conditions } from "~/content.config";
 import IconSearch from "~/assets/images/icons/search.svg";
 import IconChevronDown from "~/assets/images/icons/chevron-down-select.svg";
 
-const allCars = await getMakeModelSet();
+const allMasters = await getSchoolSubSchoolSet();
 ---
 
 <form
 	id="form-widget-search"
-	action="/cars"
+	action="/masters"
 	method="get"
 	class="grid grid-cols-1 lg:grid-cols-2 gap-4"
-	data-car-set={JSON.stringify(allCars)}
+	data-master-set={JSON.stringify(allMasters)}
 >
 	<div>
-		<label class="sr-only" for="make">Make</label>
+		<label class="sr-only" for="school">School</label>
 		<div class="grid grid-cols-1">
-			<select name="make" id="make" class="appearance-none col-start-1 row-start-1">
-				<option value="all">Choose make</option>
-				{allCars.map((car) => <option value={car.make}>{car.make}</option>)}
+			<select name="school" id="school" class="appearance-none col-start-1 row-start-1">
+				<option value="all">Choose school</option>
+				{allMasters.map((master) => <option value={master.school}>{master.school}</option>)}
 			</select>
 			<IconChevronDown class="icon-chevron-down" />
 		</div>
 	</div>
 	<div>
-		<label class="sr-only" for="model">Model</label>
+		<label class="sr-only" for="subSchool">SubSchool</label>
 		<div class="grid grid-cols-1">
-			<select name="model" id="model" class="appearance-none col-start-1 row-start-1">
-				<option value="all">Choose model</option>
+			<select name="subSchool" id="subSchool" class="appearance-none col-start-1 row-start-1">
+				<option value="all">Choose subSchool</option>
 			</select>
 			<IconChevronDown class="icon-chevron-down" />
 		</div>
@@ -57,26 +57,26 @@ const allCars = await getMakeModelSet();
 		const form = document.getElementById("form-widget-search") as HTMLFormElement;
 
 		if (form) {
-			const dataCarSet = form.getAttribute("data-car-set");
-			const allCars = dataCarSet ? JSON.parse(dataCarSet) : [];
-			const makeSelect = document.getElementById("make")! as HTMLSelectElement;
-			const modelSelect = document.getElementById("model")! as HTMLSelectElement;
+			const dataMasterSet = form.getAttribute("data-master-set");
+			const allMasters = dataMasterSet ? JSON.parse(dataMasterSet) : [];
+			const schoolSelect = document.getElementById("school")! as HTMLSelectElement;
+			const subSchoolSelect = document.getElementById("subSchool")! as HTMLSelectElement;
 
-			const populateModels = (selectedMake: string) => {
-				modelSelect.innerHTML = '<option value="all">Choose model</option>';
-				allCars.forEach((car: { make: string; models: string[] }) => {
-					if (car.make === selectedMake) {
-						car.models.forEach((model) => {
-							modelSelect.innerHTML += `<option value="${model}">${model}</option>`;
+			const populateSubSchools = (selectedSchool: string) => {
+				subSchoolSelect.innerHTML = '<option value="all">Choose subSchool</option>';
+				allMasters.forEach((master: { school: string; subSchools: string[] }) => {
+					if (master.school === selectedSchool) {
+						master.subSchools.forEach((subSchool) => {
+							subSchoolSelect.innerHTML += `<option value="${subSchool}">${subSchool}</option>`;
 						});
 					}
 				});
 			};
 
-			populateModels(makeSelect.value);
+			populateSubSchools(schoolSelect.value);
 
-			makeSelect.addEventListener("change", function () {
-				populateModels(makeSelect.value);
+			schoolSelect.addEventListener("change", function () {
+				populateSubSchools(schoolSelect.value);
 			});
 		}
 	});

@@ -1,0 +1,21 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import Heading from "~/components/Heading.astro";
+import Schools from "~/components/Schools.astro";
+---
+
+<Layout pageTitle="Five Schools" title="Five Schools">
+	<Section class:list={"bg-gray-50"}>
+		<Container>
+			<Heading>
+				<h2 slot="heading-title">Five Schools</h2>
+				<p slot="heading-content">
+					...
+				</p>
+			</Heading>
+			<Schools />
+		</Container>
+	</Section>
+</Layout>

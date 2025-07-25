@@ -3,7 +3,7 @@ import { colorClasses } from "./components/CardGridAlt.astro";
 import { pillColors } from "./components/Pill.astro";
 
 export type Blog = CollectionEntry<"blog">;
-export type Car = CollectionEntry<"cars">;
+export type Master = CollectionEntry<"masters">;
 export type Testimonial = CollectionEntry<"testimonials">;
 
 // Components
@@ -87,7 +87,7 @@ export interface SectionProps extends ClassNameProps {
 	id?: string;
 }
 
-export interface ShowCarsProps {
+export interface ShowMastersProps {
 	recent?: boolean;
 	featured?: boolean;
 	slugs?: string[];

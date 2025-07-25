@@ -17,8 +17,8 @@ const categoryKeys = Object.keys(blogCategories) as [
 	...Array<keyof typeof blogCategories>
 ];
 
-const cars = defineCollection({
-	loader: glob({ pattern: ["*.mdx", "!example.mdx"], base: "./src/content/cars" }),
+const masters = defineCollection({
+	loader: glob({ pattern: ["*.mdx", "!example.mdx"], base: "./src/content/masters" }),
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
@@ -29,8 +29,8 @@ const cars = defineCollection({
 			excerpt: z.string().optional(),
 			publishDate: z.coerce.date().default(new Date(2025, 0, 1)),
 			general: z.object({
-				make: z.string(),
-				model: z.coerce.string(),
+				school: z.string(),
+				subSchool: z.coerce.string(),
 				type: z.string().optional(),
 				price: z.number().positive(),
 				salePrice: z.number().positive().optional(),
@@ -117,14 +117,14 @@ const blog = defineCollection({
 		}),
 });
 
-const team = defineCollection({
-	loader: file("src/data/team.json"),
+const schools = defineCollection({
+	loader: file("src/data/schools.json"),
 	schema: ({ image }) =>
 		z.object({
 			name: z.string(),
-			role: z.string(),
-			email: z.string().email(),
-			phone: z.string(),
+			principal: z.string(),
+			vicePrincipals: z.array(z.string()).optional(),
+			theories: z.array(z.string()).optional(),
 			image: image(),
 		}),
 });
@@ -143,4 +143,4 @@ const testimonials = defineCollection({
 		}),
 });
 
-export const collections = { cars, blog, team, testimonials };
+export const collections = { masters, blog, schools, testimonials };

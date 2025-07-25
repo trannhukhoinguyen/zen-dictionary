@@ -65,29 +65,29 @@ export function getCurrencySymbol(): string {
 }
 
 /**
- * Returns a set of unique makes and models from the given cars collection.
+ * Returns a set of unique schools and subSchools from the given collection.
  *
  */
-export async function getMakeModelSet() {
-	const allCars = await getCollection("cars", ({ data }) => {
+export async function getSchoolSubSchoolSet() {
+	const allMasters = await getCollection("masters", ({ data }) => {
 		return data.misc?.hidden !== true;
 	});
 
-	const makesWithModels = allCars.reduce((acc: { [key: string]: Set<string> }, car) => {
-		const make = car.data.general.make;
-		const model = car.data.general.model;
+	const schoolsWithSubSchools = allMasters.reduce((acc: { [key: string]: Set<string> }, master) => {
+		const school = master.data.general.school;
+		const subSchool = master.data.general.subSchool;
 
-		if (!acc[make]) {
-			acc[make] = new Set();
+		if (!acc[school]) {
+			acc[school] = new Set();
 		}
-		acc[make].add(model);
+		acc[school].add(subSchool);
 
 		return acc;
 	}, {});
 
-	const result = Object.entries(makesWithModels).map(([make, models]) => ({
-		make,
-		models: Array.from(models),
+	const result = Object.entries(schoolsWithSubSchools).map(([school, subSchools]) => ({
+		school,
+		subSchools: Array.from(subSchools),
 	}));
 
 	return result;

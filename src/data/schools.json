@@ -1,0 +1,47 @@
+[
+	{
+		"name": "Linji (臨済)",
+        "slug": "linji",
+		"principal": "Linji Yixuan",
+		"vicePrincipals": [],
+		"theories": [],
+		"image": "/src/assets/images/schools/pexels-kaleef-lawal-1481864847-27897903.jpg",
+		"alt": "Linji (臨済) (Rinzai)"
+	},
+	{
+		"name": "Caodong (曹洞)",
+        "slug": "caodong",
+		"principal": "Dongshan Liangjie",
+		"vicePrincipals": ["Caoshan Benji"],
+		"theories": [],
+		"image": "/src/assets/images/schools/pexels-apunto-group-agencia-de-publicidad-53086916-7752788.jpg",
+		"alt": "Caodong (曹洞) (Soto)"
+	},
+	{
+		"name": "Guiyang (潙仰)",
+        "slug": "guiyang",
+		"principal": "Guishan Lingyou",
+		"vicePrincipals": ["Yangshan Huiji"],
+		"theories": [],
+		"image": "/src/assets/images/schools/pexels-vazhnik-7562139.jpg",
+		"alt": "Guiyang (潙仰) (Igyo)"
+	},
+	{
+		"name": "Fayan (法眼)",
+        "slug": "fayan",
+		"principal": "Fayan Wenyi",
+		"vicePrincipals": [],
+		"theories": [],
+		"image": "/src/assets/images/schools/pexels-vazhnik-7562139.jpg",
+		"alt": "Fayan (法眼) (Hogen)"
+	},
+	{
+		"name": "Yunmen (雲門)",
+        "slug": "yunmen",
+		"principal": "Yunmen Wenyan",
+		"vicePrincipals": [],
+		"theories": [],
+		"image": "/src/assets/images/schools/pexels-vazhnik-7562139.jpg",
+		"alt": "Yunmen (雲門) (Unmon)"
+	}
+]

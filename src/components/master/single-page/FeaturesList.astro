@@ -1,0 +1,61 @@
+---
+import type { Master as Astro } from "~/types";
+import { getMileage, getMileageUnit } from "~/utils/helpers";
+import { labels, categoryLabels } from "~/utils/labels";
+import { getEntry } from "astro:content";
+const { master } = Astro.props as { master: { id: string } };
+
+if (!master) {
+	return;
+}
+
+const masterData = (await getEntry("masters", master.id)) as { data: Record<string, any> };
+
+if (!masterData) {
+	return;
+}
+
+const excludeFields = ["price", "salePrice", "availability", "hidden", "vin", "loanWidget", "featured"];
+---
+
+{
+	Object.entries(categoryLabels).map(
+		([key, label]) =>
+			masterData.data[key] &&
+			Object.keys(masterData.data[key]).some(
+				(subKey) => !excludeFields.includes(subKey) && masterData.data[key][subKey]
+			) && (
+				<div class="grid grid-cols-1 lg:grid-cols-3 pb-12 first:mt-12 feature-list-item">
+					<h2 class={`h6 feature-icon feature-icon-${key}`}>{label}</h2>
+
+					{key === "options" ? (
+						<ul class="lg:col-span-2 grid grid-cols-2 gap-x-2 md:gap-x-8 max-w-lg gap-y-2 text-base max-lg:mt-8">
+							{masterData.data[key].sort().map((option: string) => (
+								<li class="md:whitespace-nowrap">- {option}</li>
+							))}
+						</ul>
+					) : (
+						<dl class="lg:col-span-2 grid grid-cols-2 gap-x-2 md:gap-x-8 max-w-lg gap-y-2 text-base max-lg:mt-8">
+							{Object.entries(masterData.data[key]).map(
+								([subKey, value]) =>
+									!excludeFields.includes(subKey) && (
+										<>
+											<dt>{labels[key][subKey] || subKey}</dt>
+											<dd class="font-bold md:whitespace-nowrap">
+												{subKey === "mileage"
+													? `${getMileage(value as number)} ${getMileageUnit()}`
+													: value === true
+														? "Yes"
+														: value
+															? value
+															: "N/A"}
+											</dd>
+										</>
+									)
+							)}
+						</dl>
+					)}
+				</div>
+			)
+	)
+}

@@ -6,11 +6,11 @@ import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
 
-const allCars = await getCollection("cars", ({ data }) => !data.misc?.hidden);
-const uniqueMakes = [...new Set(allCars.map((car) => car.data.general.make))];
-uniqueMakes.sort((a, b) => a.localeCompare(b));
+const allMasters = await getCollection("masters", ({ data }) => !data.misc?.hidden);
+const uniqueSchools = [...new Set(allMasters.map((master) => master.data.general.make))];
+uniqueSchools.sort((a, b) => a.localeCompare(b));
 
-const groupedMakes: Record<string, string[]> = uniqueMakes.reduce(
+const groupedSchools: Record<string, string[]> = uniqueSchools.reduce(
 	(acc, make) => {
 		const firstLetter = make[0].toUpperCase();
 		if (!acc[firstLetter]) {
@@ -23,15 +23,14 @@ const groupedMakes: Record<string, string[]> = uniqueMakes.reduce(
 );
 ---
 
-<Layout pageTitle="Makes">
+<Layout pageTitle="Schools">
 	<Section class:list={"bg-white"}>
 		<Container class:list={"max-w-3xl"}>
 			<Heading>
-				<h1 slot="heading-title">Makes</h1>
+				<h1 slot="heading-title">Schools</h1>
 
 				<p class="-mb-16" slot="heading-content">
-					Explore our range of makes for sale. We have a wide range of makes available to suit all budgets and
-					lifestyles.
+					...
 				</p>
 			</Heading>
 		</Container>
@@ -40,17 +39,17 @@ const groupedMakes: Record<string, string[]> = uniqueMakes.reduce(
 	<Section class:list={"bg-gray-50"}>
 		<Container class:list={"max-w-3xl"}>
 			{
-				Object.keys(groupedMakes).length > 0 ? (
+				Object.keys(groupedSchools).length > 0 ? (
 					<ul class="grid grid-cols-1 p-4 lg:p-8 rounded-lg shadow-md border border-gray-100 gap-4 lg:grid-cols-3 bg-white">
-						{Object.keys(groupedMakes)
+						{Object.keys(groupedSchools)
 							.sort()
 							.map((letter) => (
 								<li>
 									<h2 class="text-xl font-bold mt-4">{letter}</h2>
 									<ul>
-										{groupedMakes[letter].map((make) => (
+										{groupedSchools[letter].map((make) => (
 											<li>
-												<a href={`/cars/?make=${encodeURIComponent(make)}`}>{make}</a>
+												<a href={`/masters/?make=${encodeURIComponent(make)}`}>{make}</a>
 											</li>
 										))}
 									</ul>

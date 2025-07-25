@@ -8,7 +8,7 @@ type ShapeToLabels<T extends Record<string, any>> = {
 	[K in keyof T]: T[K] extends Record<string, any> ? ShapeToLabels<T[K]> : string | Record<string, string>;
 };
 
-export const labels: ShapeToLabels<CollectionEntry<"cars">["data"]> = {
+export const labels: ShapeToLabels<CollectionEntry<"masters">["data"]> = {
 	title: "Title",
 	image: "Image",
 	imageAlt: "Image Alt",
@@ -20,8 +20,8 @@ export const labels: ShapeToLabels<CollectionEntry<"cars">["data"]> = {
 	excerpt: "Excerpt",
 	publishDate: "Publish Date" as unknown as ShapeToLabels<Date>,
 	general: {
-		make: "Make",
-		model: "Model",
+		school: "School",
+		subSchool: "Sub School",
 		type: "Type",
 		price: "Price",
 		salePrice: "Sale Price",

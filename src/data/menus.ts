@@ -7,14 +7,14 @@ export const menuMain: MainMenuItem[] = [
 		url: "/",
 	},
 	{
-		id: "cars",
-		label: "Cars",
-		url: "/cars",
+		id: "masters",
+		label: "Masters",
+		url: "/masters",
 	},
 	{
-		id: "about",
-		label: "About",
-		url: "/about-us",
+		id: "schools",
+		label: "Schools",
+		url: "/schools",
 		submenu: [{ id: "testimonials", label: "Testimonials", url: "/about-us/testimonials" }],
 	},
 	{
@@ -24,7 +24,7 @@ export const menuMain: MainMenuItem[] = [
 		submenu: [
 			{ id: "repairs", label: "Repairs", url: "/services/repairs" },
 			{ id: "maintenance", label: "Maintenance", url: "/services/maintenance" },
-			{ id: "car-sales", label: "Car Sales", url: "/services/car-sales" },
+			{ id: "master-sales", label: "Master Sales", url: "/services/master-sales" },
 		],
 	},
 	{
@@ -42,12 +42,12 @@ export const menuNavigation: MenuNavigation = {
 			url: "/",
 		},
 		{
-			name: "Cars",
-			url: "/cars",
+			name: "Masters",
+			url: "/masters",
 		},
 		{
-			name: "About Us",
-			url: "/about-us",
+			name: "Schools",
+			url: "/schools",
 		},
 		{
 			name: "Services",
@@ -68,12 +68,12 @@ export const menuService: MenuNavigation = {
 			url: "/",
 		},
 		{
-			name: "Cars",
-			url: "/cars",
+			name: "Masters",
+			url: "/masters",
 		},
 		{
-			name: "About Us",
-			url: "/about-us",
+			name: "Schools",
+			url: "/schools",
 		},
 		{
 			name: "Services",
@@ -94,12 +94,12 @@ export const menuMisc: MenuNavigation = {
 			url: "/",
 		},
 		{
-			name: "Cars",
-			url: "/cars",
+			name: "Masters",
+			url: "/masters",
 		},
 		{
-			name: "About Us",
-			url: "/about-us",
+			name: "Schools",
+			url: "/schools",
 		},
 		{
 			name: "Services",
@@ -120,12 +120,12 @@ export const menuLegal: MenuNavigation = {
 			url: "/",
 		},
 		{
-			name: "Cars",
-			url: "/cars",
+			name: "Masters",
+			url: "/masters",
 		},
 		{
-			name: "About Us",
-			url: "/about-us",
+			name: "Schools",
+			url: "/schools",
 		},
 		{
 			name: "Services",
