@@ -33,12 +33,12 @@ const response = await fetch(APIURL);
 const responseData = response.status === 404 ? { allMasters: [] } : await response.json();
 const allMasters: Master[] = responseData.allMasters;
 
-const makes = [...new Set(allMasters.map((master: Master) => master.data.general.make))].sort();
+const schools = [...new Set(allMasters.map((master: Master) => master.data.general.school))].sort();
 const colors = [...new Set(allMasters.map((master: Master) => master.data.exterior.color))].sort();
 const count = allMasters.length;
 
 const sideBarData = {
-	makes,
+	schools,
 	colors,
 	count,
 	priceSteps,

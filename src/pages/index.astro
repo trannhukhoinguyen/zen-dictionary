@@ -46,42 +46,15 @@ import ShowMasters from "~/components/ShowMasters.astro";
 	<Section class:list={"bg-blue-50"}>
 		<Container>
 			<Heading>
-				<h2 slot="heading-title" class="mb-0">Featured s</h2>
+				<h2 slot="heading-title" class="mb-0">Featured Masters</h2>
 				<p slot="heading-content">
 					...
 				</p>
 			</Heading>
 
-			<ShowMasters slugs={["audi-tt-coupe", "porsche-911", "volkswagen-polo-gti"]} />
-		</Container>
-	</Section>
-
-	{/* CTA */}
-	<Section class:list={"bg-gradient-to-br from-gray-900 to-gray-700"}>
-		<Container>
-			<Heading class:list={"mb-0 lg:mb-0 prose-invert text-center mx-auto"}>
-				<h2 slot="heading-title">Can't find the ideal ?</h2>
-
-				<p slot="heading-content">
-					...
-				</p>
-
-				<Button href="/contact" color="white" class:list={"mt-8"}>Contact us</Button>
-			</Heading>
-		</Container>
-	</Section>
-
-	{/* Masters */}
-	<Section class:list={"bg-gray-50"}>
-		<Container>
-			<Heading>
-				<h2 slot="heading-title" class="mb-0">Recent s</h2>
-				<p slot="heading-content">
-					...
-				</p>
-			</Heading>
-
-			<ShowMasters ui="grid" slugs={["audi-tt-coupe", "porsche-911", "volkswagen-polo-gti"]} />
+			<ShowMasters slugs={[
+				"mishaka", "rahulabhadra", "shanavashin", "mahakasyapa", "ananda", "kanadeva"
+			]} />
 		</Container>
 	</Section>
 

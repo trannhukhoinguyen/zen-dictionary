@@ -31,7 +31,7 @@ const SocialUrls = {
 	<div>
 		<button
 			type="button"
-			class="font-medium block text-sm transition hover:text-gray-500"
+			class="font-medium block text-sm transition hover:text-gray-500 cursor-pointer"
 			id="button-social-share"
 			aria-expanded="true"
 			aria-haspopup="true"
@@ -52,7 +52,7 @@ const SocialUrls = {
 		<div class="py-0" role="none">
 			{
 				Object.entries(SocialUrls).map(([key, value], index) => (
-					<a href={value} class="block px-4 py-2 text-sm hover:bg-gray-100" role="menuitem" tabindex="-1">
+					<a href={value} class="block px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer" role="menuitem" tabindex="-1">
 						{key === "Facebook" && <IconFacebook class="size-5 inline-block mr-1 -mt-0.5" />}
 						{key === "X/Twitter" && <IconX class="size-5 inline-block mr-1 -mt-0.5" />}
 						{key === "WhatsApp" && <IconWhatsApp class="size-5 inline-block mr-1 -mt-0.5" />}
@@ -64,7 +64,7 @@ const SocialUrls = {
 			<button
 				id="button-copy-link"
 				type="button"
-				class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+				class="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 cursor-pointer"
 				role="menuitem"
 				tabindex="-1"
 			>
