@@ -7,16 +7,16 @@ import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
 
 const allMasters = await getCollection("masters", ({ data }) => !data.misc?.hidden);
-const uniqueSchools = [...new Set(allMasters.map((master) => master.data.general.make))];
+const uniqueSchools = [...new Set(allMasters.map((master) => master.data.general.school))];
 uniqueSchools.sort((a, b) => a.localeCompare(b));
 
 const groupedSchools: Record<string, string[]> = uniqueSchools.reduce(
-	(acc, make) => {
-		const firstLetter = make[0].toUpperCase();
+	(acc, school) => {
+		const firstLetter = school[0].toUpperCase();
 		if (!acc[firstLetter]) {
 			acc[firstLetter] = [];
 		}
-		acc[firstLetter].push(make);
+		acc[firstLetter].push(school);
 		return acc;
 	},
 	{} as Record<string, string[]>
@@ -47,9 +47,9 @@ const groupedSchools: Record<string, string[]> = uniqueSchools.reduce(
 								<li>
 									<h2 class="text-xl font-bold mt-4">{letter}</h2>
 									<ul>
-										{groupedSchools[letter].map((make) => (
+										{groupedSchools[letter].map((school) => (
 											<li>
-												<a href={`/masters/?make=${encodeURIComponent(make)}`}>{make}</a>
+												<a href={`/masters/?school=${encodeURIComponent(school)}`}>{school}</a>
 											</li>
 										))}
 									</ul>
@@ -57,7 +57,7 @@ const groupedSchools: Record<string, string[]> = uniqueSchools.reduce(
 							))}
 					</ul>
 				) : (
-					<p>No makes available at the moment. Please check back later.</p>
+					<p>No schools available at the moment. Please check back later.</p>
 				)
 			}
 		</Container>
